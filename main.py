@@ -17,6 +17,6 @@ app.include_router(crack.router, tags=['Crack'])
 @app.get('/', tags=['Home'])
 async def get_root():
     return {
-        'api': 'proyecto final :D',
+        'api': 'proyecto de crackeo',
         'docs': 'https://rarcrack-gg.herokuapp.com/' + app.docs_url
     }
