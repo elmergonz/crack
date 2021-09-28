@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 import multiprocessing as mp
+from xml.dom import minidom
 import os
 
 router = APIRouter()
@@ -22,4 +23,14 @@ def stop_crack():
 
     return {
         'crack': 'stopped'
+    }
+
+@router.get('/current_pwd')
+def current_pwd():
+    file = minidom.parse('./file/VjEII3VODa2T.zip.xml')
+
+    current = file.getElementsByTagName('current')[0].firstChild.data
+
+    return {
+        'current_pwd': current
     }
