@@ -1,22 +1,25 @@
 from fastapi import APIRouter
 import multiprocessing as mp
-import platform as pl
 import os
 
 router = APIRouter()
 
-@router.get('/system_info')
-def get_cores():
+@router.get('/run_crack')
+def run_crack():
+    global demo_count
+    cores = mp.cpu_count()
+    file_name = './file/VjEII3VODa2T.zip'
+    
+    os.system(f'./bin/script.sh {cores} {file_name}')
+
     return {
-        'core_count': mp.cpu_count(),
-        'sys_info': pl.uname()
+        'crack': 'running'
     }
 
-@router.get('/create_file')
-def create_file():
-    os.system('echo hola >> hola.txt')
+@router.get('/stop_crack')
+def stop_crack():
+    os.system(f'pkill rarcrack')
 
-    with open('hola.txt', 'r') as file:
-        return {
-            'msg': file.readlines()
-        }
+    return {
+        'crack': 'stopped'
+    }

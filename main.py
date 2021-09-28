@@ -1,7 +1,7 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 
-import crack
+import crack, demo
 
 app = FastAPI()
 
@@ -12,7 +12,8 @@ app.add_middleware(
     allow_headers=['*']
 )
 
-app.include_router(crack.router, tags=['Crack'])
+app.include_router(crack.router, tags=['crack'])
+app.include_router(demo.router, tags=['demo'])
 
 @app.get('/', tags=['Home'])
 async def get_root():
