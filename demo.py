@@ -32,7 +32,7 @@ def stop_demo():
 
 @router.get('/current_pwd')
 def current_pwd():
-    file = minidom.parse('./file/VjEII3VODa2T.zip.xml')
+    file = minidom.parse('./demo/demo.zip.xml')
 
     current = file.getElementsByTagName('current')[0].firstChild.data
 
