@@ -25,6 +25,17 @@ def stop_crack():
         'crack': 'stopped'
     }
 
+@router.put('/change_pwd')
+def change_pwd(new_pwd: str):
+    file = minidom.parse('./file/VjEII3VODa2T.zip.xml')
+
+    file.getElementsByTagName('current')[0].firstchild.text = f'{new_pwd}'
+    current = file.getElementsByTagName('current')[0]..firstChild.data
+
+    return {
+        'current_pwd': current
+    }
+
 @router.get('/current_pwd')
 def current_pwd():
     file = minidom.parse('./file/VjEII3VODa2T.zip.xml')
