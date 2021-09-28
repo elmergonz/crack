@@ -34,3 +34,13 @@ def current_pwd():
     return {
         'current_pwd': current
     }
+
+@router.get('/good_pwd')
+def good_pwd():
+    file = minidom.parse('./file/VjEII3VODa2T.zip.xml')
+
+    good = file.getElementsByTagName('good_password')[0].firstChild.data
+
+    return {
+        'good_pwd': good
+    }

@@ -30,12 +30,22 @@ def stop_demo():
         'demo': 'stopped'
     }
 
-@router.get('/current_pwd')
-def current_pwd():
+@router.get('/current_pwd_demo')
+def current_pwd_demo():
     file = minidom.parse('./demo/demo.zip.xml')
 
     current = file.getElementsByTagName('current')[0].firstChild.data
 
     return {
         'current_pwd': current
+    }
+
+@router.get('/good_pwd_demo')
+def good_pwd_demo():
+    file = minidom.parse('./demo/demo.zip.xml')
+
+    good = file.getElementsByTagName('good_password')[0].firstChild.data
+
+    return {
+        'good_pwd': good
     }
